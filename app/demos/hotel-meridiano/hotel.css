@@ -1,0 +1,179 @@
+/* ───────────────────────────────────────────────────────────────────────
+   HOTEL MERIDIANO (proyecto concepto del portafolio)
+
+   Solo se carga en esta página (ver el import en page.js). Repinta los
+   tokens compartidos de app/globals.css con una paleta cálida, solo dentro
+   de `.hotel`, para que el mismo sistema de botones, tarjetas y secciones
+   de Sitewell se vea como el sitio de otro negocio.
+
+   Estos colores DEBEN coincidir con los de lib/crearEscenaHotel.js.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.hotel {
+  --bg: #0a1116;
+  --surface: #141b22;
+  --surface-2: #1c242c;
+  --line: rgba(245, 234, 217, 0.12);
+  --text: #f5ead9;
+  --text-soft: #cdbfa8;
+  --muted: #8c8271;
+  --accent: #e3b56c; /* dorado */
+  --accent-ink: #241605;
+  --violet: #e0704a; /* terracota: se reutiliza el nombre del token para no tocar los componentes que lo usan */
+  --cyan: #7fb8ad;
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Aviso fijo: deja claro que es un proyecto concepto, no un cliente real */
+.hotel__aviso {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.hotel__aviso .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  /* padding-top despeja el encabezado fijo de Sitewell (mismo alto que scroll-padding-top) */
+  padding-top: 96px;
+  padding-bottom: 16px;
+  font-size: 0.875rem;
+}
+/* El aviso ya deja el espacio del encabezado fijo: la portada no necesita despejarlo otra vez */
+.hotel .hero__contenido {
+  padding-top: 32px;
+}
+@media (min-width: 820px) {
+  .hotel .hero__contenido {
+    padding-top: 40px;
+  }
+}
+.hotel__aviso-texto {
+  color: var(--text-soft);
+}
+.hotel__aviso-texto strong {
+  color: var(--text);
+}
+.hotel__aviso-enlace {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Pista de scroll del hero: más alta que la pantalla para que la sección quede fija
+   (.hero--fijo) mientras la maqueta 3D "vuela" hacia el hotel (ver lib/crearEscenaHotel.js) */
+.hotel-hero {
+  position: relative;
+  height: 190vh;
+}
+@media (min-width: 820px) {
+  .hotel-hero {
+    height: 230vh;
+  }
+}
+.hero--fijo {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+/* Con movimiento reducido no hay scroll-scrubbing: la pista vuelve a su alto normal y la
+   sección deja de quedar fija (la escena queda en una pose fija, ver crearEscenaHotel.js) */
+@media (prefers-reduced-motion: reduce) {
+  .hotel-hero {
+    height: auto;
+  }
+  .hero--fijo {
+    position: relative;
+    top: auto;
+  }
+}
+
+/* Fondo de respaldo de la escena: se ve mientras carga el 3D y si el navegador no tiene WebGL */
+.escena__respaldo--hotel {
+  background:
+    radial-gradient(48% 34% at 50% 24%, rgba(227, 181, 108, 0.4), transparent 72%),
+    radial-gradient(34% 26% at 72% 34%, rgba(224, 112, 74, 0.2), transparent 72%),
+    radial-gradient(30% 22% at 30% 16%, rgba(245, 234, 217, 0.12), transparent 72%);
+}
+@media (min-width: 820px) {
+  .escena__respaldo--hotel {
+    background:
+      radial-gradient(38% 52% at 74% 46%, rgba(227, 181, 108, 0.4), transparent 72%),
+      radial-gradient(28% 36% at 90% 72%, rgba(224, 112, 74, 0.2), transparent 72%),
+      radial-gradient(24% 30% at 62% 22%, rgba(245, 234, 217, 0.12), transparent 72%);
+  }
+}
+
+/* Habitaciones: misma idea de rejilla que .proyectos__lista */
+.habitaciones__lista {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+.habitacion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px 14px 24px;
+}
+.habitacion__cuerpo {
+  padding-inline: 10px;
+}
+.habitacion__nombre {
+  font-size: 1.4rem;
+}
+.habitacion__texto {
+  margin-top: 10px;
+  color: var(--text-soft);
+  font-size: 1rem;
+}
+.habitacion__cuerpo .ficha__etiquetas {
+  margin-top: 16px;
+}
+
+/* Amenidades: el ícono ocupa el lugar del número de .servicio__numero */
+.amenidad__icono {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+/* Ubicación */
+.ubicacion__rejilla {
+  display: grid;
+  gap: 32px;
+}
+.ubicacion__cabecera {
+  margin-bottom: 0;
+}
+.ubicacion__lista {
+  display: grid;
+  gap: 16px;
+}
+.ubicacion__lista li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-soft);
+}
+.ubicacion__punto {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@media (min-width: 900px) {
+  .ubicacion__rejilla {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+}

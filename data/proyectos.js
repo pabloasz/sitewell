@@ -56,6 +56,22 @@ export const proyectos = [
     enlace: null,
     portada: { desde: "#2a1f8a", hasta: "#0e3b46" },
   },
+  {
+    slug: "hotel-meridiano",
+    titulo: "Hotel Meridiano",
+    categoria: "Hotelería · Sitio con 3D interactivo",
+    anio: 2026,
+    estado: "publicado",
+    resumen:
+      "Un hotel boutique inventado para mostrar cómo se ve el diseño 3D de Sitewell aplicado a un negocio de hospitalidad.",
+    descripcion: [
+      "Hotel Meridiano es un proyecto de demostración: un hotel boutique frente al mar, completamente inventado, pensado solo para mostrar lo que Sitewell puede construir para un negocio real de este tipo.",
+      "Reutiliza la identidad y los componentes base de Sitewell, pero repinta la paleta de colores con tonos cálidos propios —inspirados en el mar y la luz de atardecer— para que se sienta como el sitio de un negocio distinto.",
+    ],
+    tecnologias: ["Next.js", "Three.js", "WebGL"],
+    enlace: "/demos/hotel-meridiano",
+    portada: { desde: "#0b2a3d", hasta: "#d99a4e" },
+  },
 ];
 
 // Texto que se muestra para cada valor de "estado".
